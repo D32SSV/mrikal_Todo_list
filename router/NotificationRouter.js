@@ -1,12 +1,22 @@
-
 const express = require("express");
-const NotificationController = require("../controller/NotificationController");
+const ControllerForNotification = require("../controller/ControllerForNotification");
 const AuthMiddleware = require("../middleware/AuthMiddleware");
 const notifyRouter = express.Router();
 
-notifyRouter.get("/lists", AuthMiddleware.verify, NotificationController.getAllNotification);
-notifyRouter.delete("/delete/:id", AuthMiddleware.verify, NotificationController.deleteNotification);
-notifyRouter.patch("/update/:id", AuthMiddleware.verify, NotificationController.updateNotification);
+notifyRouter.get(
+  "/lists",
+  AuthMiddleware.verify,
+  ControllerForNotification.getNotifications
+);
+notifyRouter.delete(
+  "/delete/:id",
+  AuthMiddleware.verify,
+  ControllerForNotification.deleteNotification
+);
+notifyRouter.patch(
+  "/update/:id",
+  AuthMiddleware.verify,
+  ControllerForNotification.updateNotification
+);
 
 module.exports = notifyRouter;
-

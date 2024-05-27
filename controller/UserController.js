@@ -4,13 +4,11 @@ const jwt = require("jsonwebtoken");
 const { sendSuccessEmail } = require("../service/MailService");
 
 class UserController {
-
-
-  static async getAllUser(req, res) {
+  static async getUsers(req, res) {
     try {
       const users = await UserService.findAllUser();
       const filteredUsers = users.filter((user) => user.id !== req.user.userId);
-      res.status(200).json({users:filteredUsers});
+      res.status(200).json({ users: filteredUsers });
     } catch (error) {
       console.error("Error fetching users:", error);
       res.status(500).json({
@@ -19,7 +17,7 @@ class UserController {
     }
   }
 
-  static async signupUser(req, res) {
+  static async signUpUser(req, res) {
     const { name, email, password } = req.body;
     try {
       if (!name || !email || !password) {

@@ -1,7 +1,6 @@
 const ShareTodoListService = require("../service/ShareToDoListService");
 
 class ShareToDoListController {
-
   static async createSharedToDoList(req, res) {
     const userId = req.params.id;
     const sharedListData = req.body;
@@ -20,7 +19,7 @@ class ShareToDoListController {
     }
   }
 
-  static async getAllSharedToDoList(req, res) {
+  static async getSharedList(req, res) {
     const userId = req.user.userId;
     try {
       const sharedToDoLists = await ShareTodoListService.findAllSharedList(
@@ -55,7 +54,7 @@ class ShareToDoListController {
     }
   }
 
-  static async updateMarkedDone(req, res) {
+  static async updateMarkAsComplete(req, res) {
     const userId = req.user.userId;
     const listId = req.params.id;
     try {
@@ -65,7 +64,10 @@ class ShareToDoListController {
           error: "List not found",
         });
       }
-      const rowsAffected = ShareTodoListService.updateOneSharedList(listId, userId);
+      const rowsAffected = ShareTodoListService.updateOneSharedList(
+        listId,
+        userId
+      );
       if (rowsAffected === 0) {
         return res.status(404).json({
           error: "Failed to update the list",

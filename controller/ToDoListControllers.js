@@ -1,7 +1,7 @@
 const ToDoListService = require("../service/ToDoListService");
 
 class ToDoListController {
-  static async getAllToDoList(req, res) {
+  static async getToDoList(req, res) {
     try {
       const userId = req.user.userId;
       const rows = await ToDoListService.findAllList(userId);
@@ -59,7 +59,7 @@ class ToDoListController {
     }
   }
 
-  static async updateMarkedDone(req, res) {
+  static async updateMarkAsComplete(req, res) {
     const listId = req.params.id;
     try {
       const userId = req.user.userId;

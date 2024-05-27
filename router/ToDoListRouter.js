@@ -4,9 +4,13 @@ const AuthMiddleware = require("../middleware/AuthMiddleware");
 
 const listRouter = express.Router();
 
-listRouter.post("/",AuthMiddleware.verify, ToDoListController.createList);
-listRouter.get("/lists", AuthMiddleware.verify, ToDoListController.getAllToDoList);
+listRouter.post("/", AuthMiddleware.verify, ToDoListController.createList);
+listRouter.get("/lists", AuthMiddleware.verify, ToDoListController.getToDoList);
 listRouter.delete("/:id", AuthMiddleware.verify, ToDoListController.deleteList);
-listRouter.patch("/update/:id", AuthMiddleware.verify, ToDoListController.updateMarkedDone);
+listRouter.patch(
+  "/update/:id",
+  AuthMiddleware.verify,
+  ToDoListController.updateMarkAsComplete
+);
 
 module.exports = listRouter;

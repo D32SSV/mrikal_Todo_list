@@ -1,7 +1,7 @@
 const NotificationService = require("../service/NotificationService");
 
-class NotificationController {
-  static async getAllNotification(req, res) {
+class ControllerForNotification {
+  static async getNotifications(req, res) {
     const userId = req.user.userId;
     try {
       const notifications = await NotificationService.findAllNotification(
@@ -55,4 +55,4 @@ class NotificationController {
   }
 }
 
-module.exports = NotificationController;
+module.exports = ControllerForNotification;
