@@ -13,7 +13,7 @@ Backend of a To-Do List app built with Express MySQL, jwt, nodemailer, sequelize
 
 1. Clone repo & install dependencies
 
-2. Start the backend server:
+2. run below command:
 
     ```bash
     node server.js
@@ -31,7 +31,7 @@ Backend of a To-Do List app built with Express MySQL, jwt, nodemailer, sequelize
 - **Delete list**: [DELETE] https://your_server:port/todolist/:id
 - **Mark as done**: [PATCH] https://your_server:port/todolist/update/:id
 
-#### sharedtodo list
+#### shared todo list
 - **Create Shared List**: [POST] https://your_server:port/sharedtodolist/:uderId
 - **Get Shared List**: [GET] https://your_server:port/sharedtodolist/lists
 - **Delete Shared List**: [DELETE] https://your_server:port/sharedtodolist/delete/:id
